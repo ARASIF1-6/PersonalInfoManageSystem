@@ -1,0 +1,122 @@
+﻿@model IEnumerable<PersonalInfoManageSystem.Models.PersonalInfo>
+
+@{
+    ViewBag.Title = "Personal Info List";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+
+<style>
+
+    /* Center table header */
+    #infoTable thead th {
+        text-align: center;
+    }
+
+    /* Center table data */
+    #infoTable tbody td {
+        text-align: center;
+    }
+
+    /* Space between search box and table */
+    .dataTables_filter {
+        margin-bottom: 15px;
+    }
+
+</style>
+
+<div class="container mt-4">
+
+    <h2>Personal Information List</h2>
+
+    <a href="/PersonalInfo/Create" class="btn btn-primary mb-3">Add New</a>
+
+    <table id="infoTable" class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Nationality</th>
+                <th width="150">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FirstName @item.LastName</td>
+                    <td>@item.Email</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.Nationality</td>
+
+                    <td>
+                        <a href="/PersonalInfo/Edit/@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <button onclick="deleteConfirm(@item.Id)" class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+@section Scripts {
+
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('#infoTable').DataTable({
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "pageLength": 10,
+                "lengthMenu": [5, 10, 25, 50, 100],
+                "columnDefs": [
+                    { "orderable": false, "targets": 4 }
+                ]
+            });
+
+        });
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+
+        function deleteConfirm(id){
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "This record will be deleted!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+
+                if(result.isConfirmed){
+
+                    window.location.href = "/PersonalInfo/Delete/" + id;
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+}
