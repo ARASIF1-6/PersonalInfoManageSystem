@@ -1,9 +1,9 @@
 # Personal Info Management System
 
-A simple **ASP.NET MVC CRUD application** that manages personal information records.  
+A simple **ASP.NET CORE MVC (.NET 8) CRUD application** that manages personal information records.  
 The system allows users to **create, view, update, and delete personal records** with a searchable and paginated data table.
 
-This project demonstrates a clean **MVC architecture**, **Entity Framework Code-First approach**, and **jQuery DataTables integration**.
+This project demonstrates a clean **MVC architecture**, **Entity Framework Core 8 Code-First approach**, and **jQuery DataTables integration**.
 
 ---
 
@@ -26,9 +26,9 @@ This project demonstrates a clean **MVC architecture**, **Entity Framework Code-
 
 | Technology | Description |
 |------------|-------------|
-| ASP.NET MVC | Web framework |
+| ASP.NET CORE MVC (.NET 8) | Web framework |
 | C# | Backend language |
-| Entity Framework | ORM (Code First) |
+| Entity Framework Core 8 | ORM (Code First) |
 | SQL Server | Database |
 | jQuery | JavaScript library |
 | jQuery DataTables | Table pagination, search, sorting |
@@ -81,11 +81,11 @@ Table: **PersonalInfos**
 | LastName | string |
 | Email | string |
 | PhoneNumber | string |
-| DateOfBirth | datetime |
+| DateOfBirth | DateTime |
 | Gender | string |
 | Address | string |
 | Nationality | string |
-| CreatedDate | datetime |
+| CreatedDate | DateTime |
 
 ---
 
@@ -136,7 +136,7 @@ Add-Migration InitialCreate
 Update-Database
 ```
 
-This will automatically create the database using **Entity Framework Code First**.
+This will automatically create the database using **Entity Framework Core 8 Code First**.
 
 ---
 
@@ -158,7 +158,7 @@ Example generated data:
 ## Steps to Run the Project
 
 1. Clone the repository
-2. Open the project in Visual Studio
+2. Open the project in Visual Studio 2022
 3. Configure database connection string
 4. Run migration commands
 5. Build the project
@@ -208,7 +208,3 @@ $('#infoTable').DataTable({
 | Delete | Remove record with confirmation |
 
 ---
-
-## License
-
-This project was created for **technical assessment / interview assignment purposes**.
